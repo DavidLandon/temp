@@ -4,8 +4,8 @@ import json
 fake = Faker(['en-US'])
 
 class User(object):
-    def __init__(self, email, password, token = None) -> None:
-        self.email = email
+    def __init__(self, id, password, token = None) -> None:
+        self.id = id
         self.password = password
         self.token = token
 
@@ -13,6 +13,6 @@ class User(object):
         return json.dumps(self.__dict__)
     
 def fake_user():
-    email = f"{str(fake.email()).lower()}"
-    password = f"{email}{fake.port_number()}"
-    return User(email = email, password = password)
+    id = f"{str(fake.id())}"
+    password = f"{id}{fake.port_number()}"
+    return User(id = id, password = password)
